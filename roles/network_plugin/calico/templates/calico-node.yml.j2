@@ -206,6 +206,9 @@ spec:
             # Set Felix logging to "info"
             - name: FELIX_LOGSEVERITYSCREEN
               value: "{{ calico_loglevel }}"
+            # Set Calico logging to "warning"
+            - name: CALICO_STARTUP_LOGLEVEL
+              value: "Warn"
             # Enable or disable usage report
             - name: FELIX_USAGEREPORTINGENABLED
               value: "{{ calico_usage_reporting }}"
