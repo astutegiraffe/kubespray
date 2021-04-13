@@ -24,7 +24,7 @@ nodeRegistration:
   taints: []
 {% endif %}
   criSocket: {{ cri_socket }}
-{% if cloud_provider is defined and cloud_provider in ["external"] %}
+{% if cloud_provider is defined and cloud_provider in ["external", "oci"] %}
   kubeletExtraArgs:
     cloud-provider: external
 {% endif %}
@@ -277,6 +277,8 @@ controllerManager:
 {% if cloud_provider is defined and cloud_provider in ["openstack", "azure", "vsphere", "aws"] %}
     cloud-provider: {{ cloud_provider }}
     cloud-config: {{ kube_config_dir }}/cloud_config
+{% elif cloud_provider is defined and cloud_provider in ["oci"] %}
+    cloud-provider: external
 {% endif %}
 {% if kube_network_plugin is defined and kube_network_plugin not in ["cloud"] %}
     configure-cloud-routes: "false"
