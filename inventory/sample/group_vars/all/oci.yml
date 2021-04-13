@@ -23,6 +23,13 @@
 #   rate_limit_qps_write:
 #   rate_limit_bucket_read:
 #   rate_limit_bucket_write:
+# oci_csi_volume_binding_mode: (default WaitForFirstConsumer)
+# oci_csi_allowed_topology_zones:
+# - UK-LONDON-1-AD-1
+# - UK-LONDON-1-AD-2
+# - UK-LONDON-1-AD-3
+# - AP-MELBOURNE-1-AD-1
+# - ME-JEDDAH-1-AD-1
 ## Other optional variables
 # oci_cloud_controller_pull_source: (default iad.ocir.io/oracle/cloud-provider-oci)
 # oci_cloud_controller_pull_secret: (name of pull secret to use if you define your own mirror above)
