@@ -35,3 +35,18 @@
     state: latest
   when: inventory_hostname == groups['kube_control_plane'][0]
   tags: oci
+
+- name: "OCI CSI Controller | Generate Manifests"
+  template:
+    src: oci-csi.yml.j2
+    dest: "{{ kube_config_dir }}/oci-csi.yml"
+  when: inventory_hostname == groups['kube-master'][0]
+  tags: oci
+
+- name: "OCI CSI Controller | Apply Manifests"
+  kube:
+    kubectl: "{{ bin_dir }}/kubectl"
+    filename: "{{ kube_config_dir }}/oci-csi.yml"
+    state: latest
+  when: inventory_hostname == groups['kube-master'][0]
+  tags: oci

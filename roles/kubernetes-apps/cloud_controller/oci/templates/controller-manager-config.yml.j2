@@ -23,7 +23,7 @@ auth:
   tenancy: {{ oci_tenancy_id }}
   user: {{ oci_user_id }}
   key: |
-    {{ oci_private_key }}
+    {{ oci_private_key | indent(width=4, indentfirst=None) }}
 
   {% if oci_private_key_passphrase is defined %}
   passphrase: {{ oci_private_key_passphrase }}
