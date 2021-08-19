@@ -69,7 +69,11 @@ spec:
         role: csi-oci
     spec:
       nodeSelector:
+{% if kube_version is version('v1.20.0', '<') %}
         node-role.kubernetes.io/master: ""
+{% else %}
+        node-role.kubernetes.io/control-plane: ""
+{% endif %}
       containers:
         - name: csi-volume-provisioner
           image: quay.io/k8scsi/csi-provisioner:v1.6.0
