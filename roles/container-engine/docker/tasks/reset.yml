@@ -31,15 +31,15 @@
   delay: 5
   when: docker_packages_list|length>0
 
-- name: Docker | Stop docker service
-  service:
-    name: "{{ item }}"
-    enabled: false
-    state: stopped
-  loop:
-    - docker
-    - docker.socket
-    - containerd
+# - name: Docker | Stop docker service
+#   service:
+#     name: "{{ item }}"
+#     enabled: false
+#     state: stopped
+#   loop:
+#     - docker
+#     - docker.socket
+#     - containerd
 
 - name: Docker | Remove dpkg hold
   dpkg_selections:
